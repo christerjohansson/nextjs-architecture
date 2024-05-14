@@ -6,8 +6,42 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 - [Next.js Scalable Project Architecture](#nextjs-scalable-project-architecture)
   - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+    - [Gitflow example](#gitflow-example)
   - [Getting Started](#getting-started)
   - [Deployment](#deployment)
+
+## Features
+
+A scalable Next.js project architecture with support for:
+
+- TypeScript
+- GIT version control
+- GIT Branching strategy (GitFlow flavoured)
+- ESLint
+- Prettier
+- Jest
+- Next.js
+- React
+- Tailwind CSS
+- Husky (Pre-Commit)
+- Engine locking
+- Enforced code formatting rules (Prettier)
+- StoryBook (separate branch)
+
+### Gitflow example
+
+      A---B---C---D---E---F---G---H---I---J---K---L---M  main
+       \                       \   \       \       \
+        \                       \   \       \       \     
+         D---E---F---G---H---I---J---K---L---M---N---O  develop
+                                  ^   ^       ^       ^
+                               v0.1 v0.2   v0.3     v0.4
+
+Explanation:
+main: Main branch where production-ready code is merged.
+develop: Develop branch where development takes place.
+tags: Tags like v0.1, v0.2, etc., indicate versions on the main branch.
 
 ## Getting Started
 
