@@ -14,6 +14,7 @@
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,css,scss,md}'"
   },
   "dependencies": {
+    "husky": "^9.0.11",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
     "react": "^18",
