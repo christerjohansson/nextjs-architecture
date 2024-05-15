@@ -1,8 +1,41 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { Person } from 'src/types/index';
 import Image from 'next/image';
 
-export default async function Home() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/users`);
-  const data = await response.json();
+export default function Home() {
+  const [data, setData] = useState<Person[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const refreshInterval = 60000; // Interval in milliseconds (e.g., 60000ms = 1 minute)
+
+  const loadData = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SITE_URL}/api/users`,
+      );
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      const data: Person[] = await response.json();
+      setData(data);
+      setError(null);
+    } catch (error: any) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadData();
+
+    const intervalId = setInterval(loadData, refreshInterval);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
